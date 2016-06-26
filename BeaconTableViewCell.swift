@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PeripheralTableViewCell: UITableViewCell {
+class BeaconTableViewCell: UITableViewCell {
     
     @IBOutlet weak var identifierTextField: UITextField!
     @IBOutlet weak var rssiTextField: UITextField!
