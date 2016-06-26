@@ -41,7 +41,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! PeripheralTableViewCell
         let peripheral = peripherals[indexPath.row]
-        cell.identifierTextField.text = "\(peripheral.eddystoneUID)"
+        cell.identifierTextField.text = "\(peripheral.eddystoneUID!)"
         cell.rssiTextField.text = "\(peripheral.RSSI)"
         return cell
     }
