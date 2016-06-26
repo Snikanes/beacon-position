@@ -1,6 +1,6 @@
-#BeaconPosition - An iOS application for indoor location tracking using Eddystone beacons
+##BeaconPosition - Indoor Location Tracking##
 
-##Planned features:##
+###Planned features:###
 - [X] Simple Eddystone ranging
 - [ ] Adding room profiles
 - [ ] IFTTT support
