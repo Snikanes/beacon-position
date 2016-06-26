@@ -42,15 +42,41 @@ class BeaconManager: NSObject, KTKEddystoneManagerDelegate {
         }
     }
     
+    //Starts Eddystone beacon discovery
     func start() {
         eddystoneManager.startEddystoneDiscoveryInRegion(namespaceRegion)
     }
     
+    //Stops Eddystone beacon discovery
     func stop() {
         eddystoneManager.stopEddystoneDiscoveryInAllRegions()
     }
+    
+    /*Creates a BeaconRangingSample based on the beacon information available (maybe move to separate class)
+    * - todo: This function may have to enforce some sort of ordering on the different beacons
+    */
+    func createRangingSample() -> BeaconRangingSample {
+        let rssiValues = beacons.map({ $0.RSSI.integerValue })
+        return BeaconRangingSample(withRssiValues: rssiValues)
+    }
+    
+    
+    
 }
 
 protocol BeaconDelegate {
     func beaconsChanged()
+}
+
+//A struct for holding a single beacon range measurement
+struct BeaconRangingSample {
+    
+    private let timeStamp: NSDate
+    private let values: [Int]
+    
+    //Initializer takes an array of integers that in our case
+    init(withRssiValues values: [Int]) {
+        timeStamp = NSDate()
+        self.values = values
+    }
 }

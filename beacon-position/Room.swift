@@ -37,17 +37,3 @@ class Room {
     
     
 }
-
-
-//A struct for holding a single beacon range measurement
-struct BeaconRangingSample {
-    
-    private let timeStamp: NSDate
-    private let measurements: Array<Int>!
-    
-    //Initializer takes an array of integers that in our case
-    init(measurements: Int...) {
-        timeStamp = NSDate()
-        self.measurements = measurements
-    }
-}

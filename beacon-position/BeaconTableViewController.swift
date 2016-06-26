@@ -18,7 +18,7 @@ class BeaconTableViewController: UITableViewController, BeaconDelegate {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! BeaconTableViewCell
         let beacon = beaconManager.beacons[indexPath.row]
-        cell.identifierTextField.text = "\(beacon.eddystoneUID!)"
+        cell.identifierTextField.text = "\(beacon.eddystoneUID!.instanceID)"
         cell.rssiTextField.text = "\(beacon.RSSI)"
         return cell
     }
