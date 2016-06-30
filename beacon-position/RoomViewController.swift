@@ -33,19 +33,41 @@ class RoomViewController: UIViewController, UITableViewDelegate, UITableViewData
         super.viewDidLoad()
         roomTableView.delegate = self
         roomTableView.dataSource = self
-        print(roomManager.rooms)
+        //print(roomManager.rooms)
     }
 
     @IBAction func addRoom(sender: UIBarButtonItem) {
         roomTableView.reloadData()
-        
-        
-        
-        
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let identifier = segue.identifier {
+            switch identifier {
+                
+            case "Show Room":
+                if let index = roomTableView.indexPathForCell((sender as? RoomTableViewCell)!) {
+                    if let vc = segue.destinationViewController as? NewRoomViewController {
+                        print("YES!")
+                        vc.room = roomManager.rooms[index.row]
+                        print(vc.room.name)
+                    }
+                }
+            
+            default:
+                break
+                
+            }
+        }
+        
+        
+        
+        
+        //if let vc as? NewRoomViewController {
+        //    vc.room =
+        //}
     }
 }

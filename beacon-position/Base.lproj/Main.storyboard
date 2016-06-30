@@ -92,7 +92,7 @@
                                         <rect key="frame" x="0.0" y="28" width="600" height="67"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Tan-5A-Cxy" id="ekB-Pn-Wna">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="66.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="67"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OGz-Rp-OOi">
@@ -109,6 +109,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="nameLabel" destination="OGz-Rp-OOi" id="Ozr-sF-uwc"/>
+                                            <segue destination="qJL-Lk-xja" kind="showDetail" identifier="Show Room" id="enS-uV-WC0"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -130,6 +131,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gKP-a8-pqv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="487" y="667"/>
+        </scene>
+        <!--New Room View Controller-->
+        <scene sceneID="Qjb-zR-EbW">
+            <objects>
+                <viewController id="qJL-Lk-xja" customClass="NewRoomViewController" customModule="beacon_position" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="wRX-gU-btO"/>
+                        <viewControllerLayoutGuide type="bottom" id="uiU-gH-95c"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="P5O-HU-edn">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8pP-LJ-aT2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1334" y="667"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="PQf-xy-jXu">
