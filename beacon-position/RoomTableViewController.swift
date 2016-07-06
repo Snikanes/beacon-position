@@ -12,7 +12,7 @@ class RoomTableViewController: UIViewController, UITableViewDelegate, UITableVie
     
     @IBOutlet weak var roomTableView: UITableView!
     private let cellIdentifier = "roomCell"
-    private var roomManager = RoomManager()
+    private var roomManager = RoomManager() // TODO: Make into a singleton
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! RoomTableViewCell
@@ -35,8 +35,8 @@ class RoomTableViewController: UIViewController, UITableViewDelegate, UITableVie
         roomTableView.dataSource = self
         //print(roomManager.rooms)
     }
-
-    @IBAction func addRoom(sender: UIBarButtonItem) {
+    
+    override func viewWillAppear(animated: Bool) {
         roomTableView.reloadData()
     }
     
@@ -54,6 +54,11 @@ class RoomTableViewController: UIViewController, UITableViewDelegate, UITableVie
                         vc.room = roomManager.rooms[index.row]
                         vc.beaconManager = BeaconManager()
                     }
+                }
+                
+            case "New Room":
+                if let vc = segue.destinationViewController as? NewRoomViewController {
+                    vc.roomManager = self.roomManager
                 }
             
             default:

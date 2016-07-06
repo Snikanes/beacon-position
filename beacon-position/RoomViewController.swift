@@ -20,11 +20,11 @@ class RoomViewController: UIViewController, BeaconDelegate {
         willSet {
             if newValue {
                 profilingIndicator.startAnimating()
-                profilingButton.setTitle("Start Room Profiling", forState: .Normal)
+                profilingButton.setTitle("Stop Room Profiling", forState: .Normal)
                 
             } else {
                 profilingIndicator.stopAnimating()
-                profilingButton.setTitle("Stop Room Profiling", forState: .Normal)
+                profilingButton.setTitle("Start Room Profiling", forState: .Normal)
             }
         }
     }

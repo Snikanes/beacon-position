@@ -70,7 +70,13 @@
                             <constraint firstItem="e9A-An-Ado" firstAttribute="trailing" secondItem="eNO-FB-K6t" secondAttribute="trailing" id="Zb8-P1-gfv"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Rooms" id="1Dl-Cz-1p9"/>
+                    <navigationItem key="navigationItem" title="Rooms" id="1Dl-Cz-1p9">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="eNW-GU-4oZ">
+                            <connections>
+                                <segue destination="sWG-d2-HYM" kind="show" identifier="New Room" id="bHl-2k-8LR"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="roomTableView" destination="wac-FH-K2r" id="57A-uR-NXn"/>
                     </connections>
@@ -78,6 +84,64 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gKP-a8-pqv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1299" y="667"/>
+        </scene>
+        <!--New Room View Controller-->
+        <scene sceneID="QPc-h3-e8K">
+            <objects>
+                <viewController id="sWG-d2-HYM" customClass="NewRoomViewController" customModule="beacon_position" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="zfU-F8-wX5"/>
+                        <viewControllerLayoutGuide type="bottom" id="xlN-e7-Qaw"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="LAw-OM-XLS">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GNu-Op-icp">
+                                <rect key="frame" x="20" y="72" width="28" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yx4-kw-YXv">
+                                <rect key="frame" x="20" y="114" width="61" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XCE-Fe-aq6">
+                                <rect key="frame" x="20" y="187" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="save:" destination="sWG-d2-HYM" eventType="touchUpInside" id="6Ad-jA-6TG"/>
+                                </connections>
+                            </button>
+                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="MvJ-Ca-eDL">
+                                <rect key="frame" x="89" y="110" width="94" height="29"/>
+                                <connections>
+                                    <action selector="countChanged:" destination="sWG-d2-HYM" eventType="valueChanged" id="pTN-R8-Cve"/>
+                                </connections>
+                            </stepper>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="GNu-Op-icp" firstAttribute="top" secondItem="zfU-F8-wX5" secondAttribute="bottom" constant="8" id="BEI-9S-NZR"/>
+                            <constraint firstItem="MvJ-Ca-eDL" firstAttribute="leading" secondItem="yx4-kw-YXv" secondAttribute="trailing" constant="8" id="Ryb-PY-WTp"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="GNu-Op-icp" secondAttribute="leading" id="dAi-DO-Dta"/>
+                            <constraint firstItem="XCE-Fe-aq6" firstAttribute="top" secondItem="yx4-kw-YXv" secondAttribute="bottom" constant="43" id="nIM-e7-7qI"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="yx4-kw-YXv" secondAttribute="leading" id="okx-Mq-r1y"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="XCE-Fe-aq6" secondAttribute="leading" id="sKX-vc-sSW"/>
+                            <constraint firstItem="MvJ-Ca-eDL" firstAttribute="top" secondItem="zfU-F8-wX5" secondAttribute="bottom" constant="46" id="tq1-oO-3AN"/>
+                            <constraint firstItem="yx4-kw-YXv" firstAttribute="top" secondItem="GNu-Op-icp" secondAttribute="bottom" constant="12" id="wD8-al-kzM"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="beaconCountLabel" destination="yx4-kw-YXv" id="QTE-Xj-DNu"/>
+                        <outlet property="nameTextField" destination="GNu-Op-icp" id="fcZ-BV-w1d"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bRK-aL-GAq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2121" y="228"/>
         </scene>
         <!--Room View Controller-->
         <scene sceneID="Qjb-zR-EbW">
@@ -143,7 +207,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8pP-LJ-aT2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2146" y="667"/>
+            <point key="canvasLocation" x="2146" y="1005"/>
         </scene>
         <!--Rooms-->
         <scene sceneID="ZiJ-Fa-gzX">
