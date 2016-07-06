@@ -13,7 +13,6 @@ class BeaconTableViewController: UITableViewController, BeaconDelegate {
     
     private let cellIdentifier = "beaconCell"
     private var beaconManager = BeaconManager()
-
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! BeaconTableViewCell

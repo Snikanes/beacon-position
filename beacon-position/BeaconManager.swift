@@ -60,6 +60,13 @@ class BeaconManager: NSObject, KTKEddystoneManagerDelegate {
         return BeaconRangingSample(withRssiValues: rssiValues)
     }
     
+    func appendRangingSample(toRoom room: Room) {
+        let rssiValues = beacons.map({ $0.RSSI.integerValue })
+        print(rssiValues)
+        room.rangingSamples.append(BeaconRangingSample(withRssiValues: rssiValues))
+        
+    }
+    
     
     
 }
@@ -69,14 +76,21 @@ protocol BeaconDelegate {
 }
 
 //A struct for holding a single beacon range measurement
-struct BeaconRangingSample {
+struct BeaconRangingSample: CustomStringConvertible {
     
     private let timeStamp: NSDate
     private let values: [Int]
+    var description: String {
+        get {
+            return values.description + "\n"
+        }
+    }
     
     //Initializer takes an array of integers that in our case
     init(withRssiValues values: [Int]) {
         timeStamp = NSDate()
         self.values = values
     }
+    
+    
 }

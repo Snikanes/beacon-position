@@ -17,23 +17,11 @@ class Room {
     init(withName name: String) {
         self.name = name
         rangingSamples = Array<BeaconRangingSample>()
-        
     }
     
     //Convenience initializer for use cases where we already have ranging samples
-    
     convenience init(withName name: String, withRangingSamples rangingSamples: Array<BeaconRangingSample>) {
         self.init(withName: name)
         self.rangingSamples = rangingSamples
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
 }

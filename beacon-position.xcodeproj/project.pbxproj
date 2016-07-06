@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		C276E60342355FDF213EEEF5 /* Pods_beacon_position.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2B924DA3FE37CE50F30C767 /* Pods_beacon_position.framework */; };
-		E50CBA301D257F8C00632CCD /* NewRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50CBA2F1D257F8C00632CCD /* NewRoomViewController.swift */; };
+		E50CBA301D257F8C00632CCD /* RoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50CBA2F1D257F8C00632CCD /* RoomViewController.swift */; };
 		E538F4F91D1F03CD00A4AA5D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E538F4F81D1F03CD00A4AA5D /* AppDelegate.swift */; };
 		E538F4FB1D1F03CD00A4AA5D /* BeaconTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E538F4FA1D1F03CD00A4AA5D /* BeaconTableViewController.swift */; };
 		E538F4FE1D1F03CD00A4AA5D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E538F4FC1D1F03CD00A4AA5D /* Main.storyboard */; };
@@ -17,7 +17,7 @@
 		E538F50E1D1F03CD00A4AA5D /* beacon_positionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E538F50D1D1F03CD00A4AA5D /* beacon_positionTests.swift */; };
 		E538F5191D1F03CD00A4AA5D /* beacon_positionUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E538F5181D1F03CD00A4AA5D /* beacon_positionUITests.swift */; };
 		E5B651531D204B89009F4EEE /* RoomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B651521D204B89009F4EEE /* RoomTableViewCell.swift */; };
-		E5B651551D204C95009F4EEE /* RoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B651541D204C95009F4EEE /* RoomViewController.swift */; };
+		E5B651551D204C95009F4EEE /* RoomTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B651541D204C95009F4EEE /* RoomTableViewController.swift */; };
 		E5B651571D205528009F4EEE /* RoomManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B651561D205528009F4EEE /* RoomManager.swift */; };
 		E5C945BA1D1F38C300A83E94 /* BeaconTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C945B91D1F38C300A83E94 /* BeaconTableViewCell.swift */; };
 		E5C945C21D1FEDFB00A83E94 /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C945C11D1FEDFB00A83E94 /* Room.swift */; };
@@ -45,7 +45,7 @@
 		6A54668137B3AA58882776FC /* Pods-beacon-position.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-beacon-position.release.xcconfig"; path = "Pods/Target Support Files/Pods-beacon-position/Pods-beacon-position.release.xcconfig"; sourceTree = "<group>"; };
 		950D06D090E8ECA8BA6FF45E /* Pods-beacon-position.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-beacon-position.debug.xcconfig"; path = "Pods/Target Support Files/Pods-beacon-position/Pods-beacon-position.debug.xcconfig"; sourceTree = "<group>"; };
 		C2B924DA3FE37CE50F30C767 /* Pods_beacon_position.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_beacon_position.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E50CBA2F1D257F8C00632CCD /* NewRoomViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewRoomViewController.swift; sourceTree = "<group>"; };
+		E50CBA2F1D257F8C00632CCD /* RoomViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomViewController.swift; sourceTree = "<group>"; };
 		E538F4F51D1F03CC00A4AA5D /* beacon-position.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "beacon-position.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E538F4F81D1F03CD00A4AA5D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E538F4FA1D1F03CD00A4AA5D /* BeaconTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeaconTableViewController.swift; sourceTree = "<group>"; };
@@ -61,7 +61,7 @@
 		E538F51A1D1F03CD00A4AA5D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E538F5281D1F0A2B00A4AA5D /* BeaconPosition-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BeaconPosition-Bridging-Header.h"; sourceTree = "<group>"; };
 		E5B651521D204B89009F4EEE /* RoomTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomTableViewCell.swift; sourceTree = "<group>"; };
-		E5B651541D204C95009F4EEE /* RoomViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomViewController.swift; sourceTree = "<group>"; };
+		E5B651541D204C95009F4EEE /* RoomTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomTableViewController.swift; sourceTree = "<group>"; };
 		E5B651561D205528009F4EEE /* RoomManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomManager.swift; sourceTree = "<group>"; };
 		E5C945B91D1F38C300A83E94 /* BeaconTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BeaconTableViewCell.swift; path = ../BeaconTableViewCell.swift; sourceTree = "<group>"; };
 		E5C945C11D1FEDFB00A83E94 /* Room.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
@@ -147,9 +147,9 @@
 				E5C945C11D1FEDFB00A83E94 /* Room.swift */,
 				E5C945C31D2019BD00A83E94 /* BeaconManager.swift */,
 				E5B651521D204B89009F4EEE /* RoomTableViewCell.swift */,
-				E5B651541D204C95009F4EEE /* RoomViewController.swift */,
+				E5B651541D204C95009F4EEE /* RoomTableViewController.swift */,
 				E5B651561D205528009F4EEE /* RoomManager.swift */,
-				E50CBA2F1D257F8C00632CCD /* NewRoomViewController.swift */,
+				E50CBA2F1D257F8C00632CCD /* RoomViewController.swift */,
 			);
 			path = "beacon-position";
 			sourceTree = "<group>";
@@ -359,8 +359,8 @@
 			files = (
 				E5C945C41D2019BD00A83E94 /* BeaconManager.swift in Sources */,
 				E538F4FB1D1F03CD00A4AA5D /* BeaconTableViewController.swift in Sources */,
-				E5B651551D204C95009F4EEE /* RoomViewController.swift in Sources */,
-				E50CBA301D257F8C00632CCD /* NewRoomViewController.swift in Sources */,
+				E5B651551D204C95009F4EEE /* RoomTableViewController.swift in Sources */,
+				E50CBA301D257F8C00632CCD /* RoomViewController.swift in Sources */,
 				E5B651531D204B89009F4EEE /* RoomTableViewCell.swift in Sources */,
 				E5B651571D205528009F4EEE /* RoomManager.swift in Sources */,
 				E538F4F91D1F03CD00A4AA5D /* AppDelegate.swift in Sources */,

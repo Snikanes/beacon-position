@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -62,7 +63,7 @@
         <!--Title-->
         <scene sceneID="W0a-zC-8yG">
             <objects>
-                <viewController id="vuc-JC-gvl" customClass="RoomViewController" customModule="beacon_position" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="vuc-JC-gvl" customClass="RoomTableViewController" customModule="beacon_position" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="bqD-ni-YHs"/>
                         <viewControllerLayoutGuide type="bottom" id="VJd-oF-R09"/>
@@ -132,10 +133,10 @@
             </objects>
             <point key="canvasLocation" x="487" y="667"/>
         </scene>
-        <!--New Room View Controller-->
+        <!--Room View Controller-->
         <scene sceneID="Qjb-zR-EbW">
             <objects>
-                <viewController id="qJL-Lk-xja" customClass="NewRoomViewController" customModule="beacon_position" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="qJL-Lk-xja" customClass="RoomViewController" customModule="beacon_position" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="wRX-gU-btO"/>
                         <viewControllerLayoutGuide type="bottom" id="uiU-gH-95c"/>
@@ -143,8 +144,56 @@
                     <view key="view" contentMode="scaleToFill" id="P5O-HU-edn">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nTK-8Y-kEu">
+                                <rect key="frame" x="190" y="279" width="221" height="42"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" title="Start Room Profiling"/>
+                                <connections>
+                                    <action selector="toggleProfiling:" destination="qJL-Lk-xja" eventType="touchUpInside" id="Syw-4G-4uF"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y0G-Xe-Rsv">
+                                <rect key="frame" x="253" y="28" width="96" height="48"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="wdc-0i-4fO">
+                                <rect key="frame" x="290" y="329" width="20" height="20"/>
+                            </activityIndicatorView>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tss-em-atP">
+                                <rect key="frame" x="20" y="357" width="560" height="223"/>
+                                <subviews>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="PZY-ef-iPg">
+                                        <rect key="frame" x="0.0" y="0.0" width="560" height="223"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                </subviews>
+                            </scrollView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="nTK-8Y-kEu" firstAttribute="centerY" secondItem="P5O-HU-edn" secondAttribute="centerY" id="9IJ-fv-3hT"/>
+                            <constraint firstItem="tss-em-atP" firstAttribute="top" secondItem="wdc-0i-4fO" secondAttribute="bottom" constant="8" id="EBr-hg-EXY"/>
+                            <constraint firstItem="Y0G-Xe-Rsv" firstAttribute="centerX" secondItem="P5O-HU-edn" secondAttribute="centerX" id="IQa-Cr-xpE"/>
+                            <constraint firstItem="uiU-gH-95c" firstAttribute="top" secondItem="tss-em-atP" secondAttribute="bottom" constant="20" id="PE3-Gx-FP2"/>
+                            <constraint firstItem="Y0G-Xe-Rsv" firstAttribute="top" secondItem="wRX-gU-btO" secondAttribute="bottom" constant="8" id="QX2-04-KFF"/>
+                            <constraint firstItem="wdc-0i-4fO" firstAttribute="top" secondItem="nTK-8Y-kEu" secondAttribute="bottom" constant="8" id="iIb-bE-PpS"/>
+                            <constraint firstItem="wdc-0i-4fO" firstAttribute="centerX" secondItem="P5O-HU-edn" secondAttribute="centerXWithinMargins" id="lg1-hg-hAy"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="tss-em-atP" secondAttribute="trailing" id="qag-Ux-143"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="tss-em-atP" secondAttribute="leading" id="skz-a2-fVS"/>
+                            <constraint firstItem="nTK-8Y-kEu" firstAttribute="centerX" secondItem="P5O-HU-edn" secondAttribute="centerX" id="zOa-r1-Ek6"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="nameLabel" destination="Y0G-Xe-Rsv" id="cGG-AK-dx9"/>
+                        <outlet property="profilingButton" destination="nTK-8Y-kEu" id="wKx-yM-ZEx"/>
+                        <outlet property="profilingIndicator" destination="wdc-0i-4fO" id="IGm-V3-Lcg"/>
+                        <outlet property="samplesTextView" destination="PZY-ef-iPg" id="K54-K8-hCO"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8pP-LJ-aT2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -160,8 +209,8 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="le6-W4-BGT" kind="relationship" relationship="viewControllers" id="XMB-CM-0bA"/>
                         <segue destination="vuc-JC-gvl" kind="relationship" relationship="viewControllers" id="kN4-kU-Z3z"/>
+                        <segue destination="le6-W4-BGT" kind="relationship" relationship="viewControllers" id="XMB-CM-0bA"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="orD-gy-CBe" userLabel="First Responder" sceneMemberID="firstResponder"/>
