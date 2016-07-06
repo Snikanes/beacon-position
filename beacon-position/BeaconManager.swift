@@ -82,7 +82,7 @@ struct BeaconRangingSample: CustomStringConvertible {
     private let values: [Int]
     var description: String {
         get {
-            return values.description + "\n"
+            return "\(self.timeStamp.description): \(values.description) \n"
         }
     }
     

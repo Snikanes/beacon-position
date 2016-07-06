@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RoomViewController: UIViewController {
+class RoomViewController: UIViewController, BeaconDelegate {
     
     var room: Room!
     var beaconManager: BeaconManager!
@@ -51,9 +51,16 @@ class RoomViewController: UIViewController {
         })
     }
     
+    func beaconsChanged() {
+        if(room.numberOfBeacons != nil) {
+            profilingButton.enabled = beaconManager.beacons.count >= room.numberOfBeacons
+        }
+    }
     
     override func viewDidLoad() {
         nameLabel.text = room.name
+        profilingButton.enabled = room.numberOfBeacons == nil
+        beaconManager.delegate = self
         profilingIndicator.hidesWhenStopped = true
     }
     

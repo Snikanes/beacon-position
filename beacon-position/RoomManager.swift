@@ -14,9 +14,8 @@ class RoomManager {
     var rooms = [Room]()
     
     init() {
-        rooms.append(Room(withName: "Living room"))
-        rooms.append(Room(withName: "Bathroom"))
-        rooms.append(Room(withName: "Kitchen"))
-        rooms.forEach( {print($0.name)} )
+        rooms.append(Room(withName: "Living room", forNumberOfBeacons: 4))
+        rooms.append(Room(withName: "Bathroom", forNumberOfBeacons: 4))
+        rooms.append(Room(withName: "Kitchen", forNumberOfBeacons: 4))
     }
 }

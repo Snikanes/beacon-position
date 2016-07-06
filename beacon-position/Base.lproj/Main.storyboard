@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="0K4-fT-pCv">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vuc-JC-gvl">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -7,59 +7,6 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Beacons-->
-        <scene sceneID="JFw-wo-Tib">
-            <objects>
-                <tableViewController modalPresentationStyle="currentContext" clearsSelectionOnViewWillAppear="NO" id="le6-W4-BGT" customClass="BeaconTableViewController" customModule="beacon_position" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="interactive" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="79" sectionHeaderHeight="28" sectionFooterHeight="28" id="c1O-PN-AqD">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="beaconCell" rowHeight="79" id="nU3-pn-YFT" customClass="BeaconTableViewCell" customModule="beacon_position" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="600" height="79"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nU3-pn-YFT" id="V0r-vB-BZE">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="79"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yxC-aJ-cJ0">
-                                            <rect key="frame" x="8" y="8" width="584" height="30"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <textInputTraits key="textInputTraits"/>
-                                        </textField>
-                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tZA-rg-CNb">
-                                            <rect key="frame" x="8" y="41" width="584" height="30"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <textInputTraits key="textInputTraits"/>
-                                        </textField>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstAttribute="trailingMargin" secondItem="yxC-aJ-cJ0" secondAttribute="trailing" id="8uD-U5-ZGa"/>
-                                        <constraint firstItem="yxC-aJ-cJ0" firstAttribute="leading" secondItem="V0r-vB-BZE" secondAttribute="leadingMargin" id="NoR-8W-lQy"/>
-                                        <constraint firstItem="yxC-aJ-cJ0" firstAttribute="top" secondItem="V0r-vB-BZE" secondAttribute="topMargin" id="Pro-bH-nem"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="tZA-rg-CNb" secondAttribute="trailing" id="miV-iJ-AYM"/>
-                                        <constraint firstItem="tZA-rg-CNb" firstAttribute="leading" secondItem="V0r-vB-BZE" secondAttribute="leadingMargin" id="uat-VV-b7V"/>
-                                        <constraint firstItem="tZA-rg-CNb" firstAttribute="bottom" secondItem="V0r-vB-BZE" secondAttribute="bottomMargin" id="xfe-Ma-D5w"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="identifierTextField" destination="yxC-aJ-cJ0" id="vqa-Ec-ceP"/>
-                                    <outlet property="rssiTextField" destination="tZA-rg-CNb" id="rpI-K5-kAC"/>
-                                </connections>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="le6-W4-BGT" id="YN1-MP-4nf"/>
-                            <outlet property="delegate" destination="le6-W4-BGT" id="pvU-az-MqH"/>
-                        </connections>
-                    </tableView>
-                    <tabBarItem key="tabBarItem" title="Beacons" image="beacon-icon" id="Dg9-tE-hZV"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="edg-vH-eEh" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="487" y="-99"/>
-        </scene>
         <!--Title-->
         <scene sceneID="W0a-zC-8yG">
             <objects>
@@ -145,7 +92,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nTK-8Y-kEu">
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nTK-8Y-kEu">
                                 <rect key="frame" x="190" y="279" width="221" height="42"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <state key="normal" title="Start Room Profiling"/>
@@ -199,27 +146,8 @@
             </objects>
             <point key="canvasLocation" x="1334" y="667"/>
         </scene>
-        <!--Tab Bar Controller-->
-        <scene sceneID="PQf-xy-jXu">
-            <objects>
-                <tabBarController id="0K4-fT-pCv" sceneMemberID="viewController">
-                    <tabBar key="tabBar" contentMode="scaleToFill" id="b0h-Px-dcw">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    </tabBar>
-                    <connections>
-                        <segue destination="vuc-JC-gvl" kind="relationship" relationship="viewControllers" id="kN4-kU-Z3z"/>
-                        <segue destination="le6-W4-BGT" kind="relationship" relationship="viewControllers" id="XMB-CM-0bA"/>
-                    </connections>
-                </tabBarController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="orD-gy-CBe" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-382" y="246"/>
-        </scene>
     </scenes>
     <resources>
-        <image name="beacon-icon" width="30" height="30"/>
         <image name="room-icon" width="30" height="30"/>
     </resources>
 </document>

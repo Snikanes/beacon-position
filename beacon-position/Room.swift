@@ -12,16 +12,18 @@ class Room {
     
     var name: String
     var rangingSamples: Array<BeaconRangingSample>!
+    var numberOfBeacons: Int?
     
-    //Initializer takes the name of the room, and initalizes an empty array
-    init(withName name: String) {
+    //Initializer takes the name of the room and a specified number of beacons, and initalizes an empty array
+    init(withName name: String, forNumberOfBeacons numberOfBeacons: Int?) {
         self.name = name
+        self.numberOfBeacons = numberOfBeacons
         rangingSamples = Array<BeaconRangingSample>()
     }
     
     //Convenience initializer for use cases where we already have ranging samples
-    convenience init(withName name: String, withRangingSamples rangingSamples: Array<BeaconRangingSample>) {
-        self.init(withName: name)
+    convenience init(withName name: String, forNumberOfBeacons numberOfBeacons: Int, withRangingSamples rangingSamples: Array<BeaconRangingSample>) {
+        self.init(withName: name, forNumberOfBeacons: numberOfBeacons)
         self.rangingSamples = rangingSamples
     }
 }
