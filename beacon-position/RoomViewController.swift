@@ -10,13 +10,26 @@ import UIKit
 
 class RoomViewController: UIViewController, BeaconDelegate {
     
+    // MARK: Instance variables
+    
     var room: Room!
-    var beaconManager: BeaconManager!
-    var profiling = false
+    var beaconManager = BeaconManager()
     var timer: NSTimer?
     
-    var stoppedText = "Start Room Profiling"
-    var startedText = "Stop Room Profiling"
+    var profiling = false {
+        willSet {
+            if newValue {
+                profilingIndicator.startAnimating()
+                profilingButton.setTitle("Start Room Profiling", forState: .Normal)
+                
+            } else {
+                profilingIndicator.stopAnimating()
+                profilingButton.setTitle("Stop Room Profiling", forState: .Normal)
+            }
+        }
+    }
+    
+    // MARK: Outlets and Actions
     
     @IBOutlet weak var samplesTextView: UITextView!
     @IBOutlet weak var profilingButton: UIButton!
@@ -25,20 +38,13 @@ class RoomViewController: UIViewController, BeaconDelegate {
     
     @IBAction func toggleProfiling(sender: UIButton) {
         if profiling {
-            profilingIndicator.stopAnimating()
-            profilingButton.setTitle(stoppedText, forState: .Normal)
-            
             if timer != nil {
                 timer!.invalidate()
                 timer = nil
             }
-            
             samplesTextView.text = room.rangingSamples.description
             
         } else {
-            profilingIndicator.startAnimating()
-            profilingButton.setTitle(startedText, forState: .Normal)
-            
             timer = NSTimer.scheduledTimerWithTimeInterval(0.2, target: self, selector: #selector(RoomViewController.appendSample), userInfo: nil, repeats: true)
         }
         profiling = !profiling
@@ -57,9 +63,16 @@ class RoomViewController: UIViewController, BeaconDelegate {
         }
     }
     
+    
+    
+    
+    // MARK: Lifecycle Events
+    
     override func viewDidLoad() {
         nameLabel.text = room.name
-        profilingButton.enabled = room.numberOfBeacons == nil
+        if room.numberOfBeacons == nil {
+            profilingButton.enabled = true
+        }
         beaconManager.delegate = self
         profilingIndicator.hidesWhenStopped = true
     }
@@ -70,6 +83,10 @@ class RoomViewController: UIViewController, BeaconDelegate {
     
     override func viewWillDisappear(animated: Bool) {
         beaconManager.stop()
+        if(timer != nil) {
+            timer!.invalidate()
+            timer = nil
+        }
     }
 
 }

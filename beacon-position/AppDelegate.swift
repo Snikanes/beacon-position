@@ -17,22 +17,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        
-        // Set API Key
-        Kontakt.setAPIKey("bBjpHrPTFZkMkswqBbRVGIeUnNdXwoDg")
-        
-        //Initiate Beacon Manager
-        beaconManager = KTKBeaconManager(delegate: self)
-        beaconManager.requestLocationAlwaysAuthorization()
-        
-        //Region
-        let proximityUUID = NSUUID(UUIDString: "f7826da6-4fa2-4e98-8024-bc5b71e0893e")
-        let region = KTKBeaconRegion(proximityUUID: proximityUUID!, identifier: "region")
-        
-        // Start Monitoring and Ranging
-        beaconManager.startMonitoringForRegion(region)
-        beaconManager.startRangingBeaconsInRegion(region)
-        
         return true
     }
 
@@ -58,23 +42,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 }
-
-extension AppDelegate: KTKBeaconManagerDelegate {
-    
-    func beaconManager(manager: KTKBeaconManager, didChangeLocationAuthorizationStatus status: CLAuthorizationStatus) {
-        
-    }
-    
-    func beaconManager(manager: KTKBeaconManager, didEnterRegion region: KTKBeaconRegion) {
-        print("Enter region \(region)")
-    }
-    
-    func beaconManager(manager: KTKBeaconManager, didExitRegion region: KTKBeaconRegion) {
-        print("Exit region \(region)")
-    }
-    
-    func beaconManager(manager: KTKBeaconManager, didRangeBeacons beacons: [CLBeacon], inRegion region: KTKBeaconRegion) {
-        print("Ranged beacons count: \(beacons.count)")
-    }
-}
-
