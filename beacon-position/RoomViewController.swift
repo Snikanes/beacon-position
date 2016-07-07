@@ -16,7 +16,7 @@ class RoomViewController: UIViewController, BeaconDelegate {
     var beaconManager = BeaconManager()
     var timer: NSTimer?
     
-    var profiling = false {
+    var isProfiling = false {
         willSet {
             if newValue {
                 profilingIndicator.startAnimating()
@@ -37,7 +37,7 @@ class RoomViewController: UIViewController, BeaconDelegate {
     @IBOutlet weak var nameLabel: UILabel!
     
     @IBAction func toggleProfiling(sender: UIButton) {
-        if profiling {
+        if isProfiling {
             if timer != nil {
                 timer!.invalidate()
                 timer = nil
@@ -47,7 +47,7 @@ class RoomViewController: UIViewController, BeaconDelegate {
         } else {
             timer = NSTimer.scheduledTimerWithTimeInterval(0.2, target: self, selector: #selector(RoomViewController.appendSample), userInfo: nil, repeats: true)
         }
-        profiling = !profiling
+        isProfiling = !isProfiling
 
     }
     

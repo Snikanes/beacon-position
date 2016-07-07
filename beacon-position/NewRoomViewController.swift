@@ -8,7 +8,7 @@
 
 import UIKit
 
-class NewRoomViewController: UIViewController {
+class NewRoomViewController: UIViewController, UINavigationBarDelegate {
     
     private var count: Int! {
         willSet {
@@ -28,12 +28,20 @@ class NewRoomViewController: UIViewController {
         count = Int(sender.value)
     }
     
-    
-    @IBAction func save(sender: UIButton) {
-        saveRoom()
-        sender.enabled = false
+    func positionForBar(bar: UIBarPositioning) -> UIBarPosition {
+        return UIBarPosition.TopAttached
     }
     
+    //Validation needs to be added
+    @IBAction func save(sender: UIBarButtonItem) {
+        saveRoom()
+        cancel(sender)
+    }
+    @IBOutlet weak var navBar: UINavigationBar!
+    
+    @IBAction func cancel(sender: UIBarButtonItem) {
+        presentingViewController!.dismissViewControllerAnimated(true, completion: nil)
+    }
     
     func saveRoom() {
         if let name = nameTextField.text {
@@ -44,12 +52,8 @@ class NewRoomViewController: UIViewController {
     
     override func viewDidLoad() {
         count = 0
-        
+        navBar.delegate = self
     }
-    
-    
-    
-    
 }
 
 
