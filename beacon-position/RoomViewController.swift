@@ -36,6 +36,9 @@ class RoomViewController: UIViewController, BeaconDelegate {
     @IBOutlet weak var profilingIndicator: UIActivityIndicatorView!
     @IBOutlet weak var nameLabel: UILabel!
     
+    
+    
+    // Toggles the capture of beacon ranging samples, which are appended to this room's list of ranging samples
     @available(iOS 10.0, *)
     @IBAction func toggleProfiling(_ sender: UIButton) {
         if isProfiling {
@@ -45,16 +48,19 @@ class RoomViewController: UIViewController, BeaconDelegate {
             samplesTextView.text = room.rangingSamples.description
             
         } else {
-            timer = Timer.scheduledTimer(withTimeInterval: 0.2, repeats: true, block: appendSample)
+            timer = Timer.scheduledTimer(withTimeInterval: 0.2, repeats: true, block: { _ in
+                self.room.append(rangingSample: self.beaconManager.createRangingSample())
+            })
         }
         isProfiling = !isProfiling
     }
-    
+    /*
     func appendSample(whenTimerFires timer: Timer) {
         DispatchQueue.global(attributes: DispatchQueue.GlobalAttributes.qosUserInitiated).async(execute: {
-            self.beaconManager.appendRangingSample(toRoom: self.room)
+            
         })
     }
+ */
     
     func beaconsChanged() {
         if(room.numberOfBeacons != nil) {

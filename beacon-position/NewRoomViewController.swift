@@ -12,7 +12,7 @@ class NewRoomViewController: UIViewController, UINavigationBarDelegate {
     
     private var count: Int! {
         willSet {
-            beaconCountLabel.text = "\(newValue)"
+            beaconCountLabel.text = "\(newValue!)"
         }
     }
     

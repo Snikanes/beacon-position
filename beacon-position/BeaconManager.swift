@@ -52,44 +52,39 @@ class BeaconManager: NSObject, KTKEddystoneManagerDelegate {
         eddystoneManager.stopEddystoneDiscoveryInAllRegions()
     }
     
-    /*Creates a BeaconRangingSample based on the beacon information available (maybe move to separate class)
+    /* Creates a BeaconRangingSample based on the beacon information available (maybe move to separate class)
     * - todo: This function may have to enforce some sort of ordering on the different beacons
     */
     func createRangingSample() -> BeaconRangingSample {
-        let rssiValues = beacons.map({ $0.rssi.intValue })
-        return BeaconRangingSample(withRssiValues: rssiValues)
+        let IDsAndRssiValues = beacons.map({ ($0.identifier.uuidString, $0.rssi.intValue) })
+        return BeaconRangingSample(withIDsAndRssiValues: IDsAndRssiValues)
     }
-    
-    func appendRangingSample(toRoom room: Room) {
-        let rssiValues = beacons.map({ $0.rssi.intValue })
-        print(rssiValues)
-        room.rangingSamples.append(BeaconRangingSample(withRssiValues: rssiValues))
-        
-    }
-    
-    
-    
 }
 
 protocol BeaconDelegate {
     func beaconsChanged()
 }
 
-//A struct for holding a single beacon range measurement
+//A struct for holding a single beacon ranging sample
 struct BeaconRangingSample: CustomStringConvertible {
     
-    private let timeStamp: NSDate
-    private let values: [Int]
+    private let values: [(String,Int)]
+    
+    var beaconCount: Int {
+        get {
+            return values.count
+        }
+    }
+    
     var description: String {
         get {
-            return "\(self.timeStamp.description): \(values.description) \n"
+            return "\(values) \n"
         }
     }
     
     //Initializer takes an array of integers that in our case
-    init(withRssiValues values: [Int]) {
-        timeStamp = NSDate()
-        self.values = values
+    init(withIDsAndRssiValues values: [(String, Int)]) {
+        self.values = values.sorted(isOrderedBefore: { $0.0 > $1.0 })
     }
     
     
