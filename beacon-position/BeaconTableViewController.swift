@@ -14,19 +14,19 @@ class BeaconTableViewController: UITableViewController, BeaconDelegate {
     private let cellIdentifier = "beaconCell"
     private var beaconManager = BeaconManager()
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! BeaconTableViewCell
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath as IndexPath) as! BeaconTableViewCell
         let beacon = beaconManager.beacons[indexPath.row]
         cell.identifierTextField.text = "\(beacon.eddystoneUID!.instanceID)"
-        cell.rssiTextField.text = "\(beacon.RSSI)"
+        cell.rssiTextField.text = "\(beacon.rssi)"
         return cell
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection: Int) -> Int {
         return beaconManager.beacons.count
     }
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
@@ -45,11 +45,11 @@ class BeaconTableViewController: UITableViewController, BeaconDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         beaconManager.start()
     }
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         beaconManager.stop()
     }
 }

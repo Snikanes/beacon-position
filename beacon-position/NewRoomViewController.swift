@@ -20,27 +20,29 @@ class NewRoomViewController: UIViewController, UINavigationBarDelegate {
     @IBOutlet weak var beaconCountLabel: UILabel!
     var roomManager: RoomManager!
     
-    
-    @IBAction func countChanged(sender: UIStepper) {
+    @IBAction func countChanged(_ sender: UIStepper) {
         if sender.value < 0 {
             sender.value = 0
         }
         count = Int(sender.value)
     }
     
-    func positionForBar(bar: UIBarPositioning) -> UIBarPosition {
-        return UIBarPosition.TopAttached
+    private func positionForBar(bar: UIBarPositioning) -> UIBarPosition {
+        return UIBarPosition.topAttached
     }
     
     //Validation needs to be added
-    @IBAction func save(sender: UIBarButtonItem) {
-        saveRoom()
-        cancel(sender)
+    
+    
+    @IBAction func cancel(_ sender: UIBarButtonItem) {
+        presentingViewController!.dismiss(animated: true, completion: nil)
     }
+    
     @IBOutlet weak var navBar: UINavigationBar!
     
-    @IBAction func cancel(sender: UIBarButtonItem) {
-        presentingViewController!.dismissViewControllerAnimated(true, completion: nil)
+    @IBAction func save(_ sender: UIBarButtonItem) {
+        saveRoom()
+        cancel(sender)
     }
     
     func saveRoom() {
@@ -55,5 +57,4 @@ class NewRoomViewController: UIViewController, UINavigationBarDelegate {
         navBar.delegate = self
     }
 }
-
 

@@ -14,18 +14,18 @@ class RoomTableViewController: UIViewController, UITableViewDelegate, UITableVie
     private let cellIdentifier = "roomCell"
     private var roomManager = RoomManager() // TODO: Make into a singleton
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! RoomTableViewCell
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath as IndexPath) as! RoomTableViewCell
         let room = roomManager.rooms[indexPath.row]
         cell.nameLabel.text = room.name
         return cell
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return roomManager.rooms.count
     }
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    private func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
     
@@ -36,7 +36,7 @@ class RoomTableViewController: UIViewController, UITableViewDelegate, UITableVie
         //print(roomManager.rooms)
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         roomTableView.reloadData()
     }
     
@@ -44,12 +44,12 @@ class RoomTableViewController: UIViewController, UITableViewDelegate, UITableVie
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: AnyObject?) {
         if let identifier = segue.identifier {
             switch identifier {
                 
             case "Show Room":
-                if let index = roomTableView.indexPathForCell((sender as? RoomTableViewCell)!) {
+                if let index = roomTableView.indexPath(for : (sender as? RoomTableViewCell)!) {
                     if let vc = segue.destinationViewController as? RoomViewController {
                         vc.room = roomManager.rooms[index.row]
                         vc.beaconManager = BeaconManager()

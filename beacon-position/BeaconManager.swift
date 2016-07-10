@@ -26,7 +26,7 @@ class BeaconManager: NSObject, KTKEddystoneManagerDelegate {
     var delegate: BeaconDelegate?
 
     
-    func eddystoneManager(manager: KTKEddystoneManager, didDiscoverEddystones eddystones: Set<KTKEddystone>, inRegion region: KTKEddystoneRegion?) {
+    func eddystoneManager(_ manager: KTKEddystoneManager, didDiscover eddystones: Set<KTKEddystone>, in region: KTKEddystoneRegion?) {
         eddystones.forEach({(eddystone: KTKEddystone) in
             if !beacons.contains(eddystone) {
                 beacons.append(eddystone)
@@ -34,9 +34,9 @@ class BeaconManager: NSObject, KTKEddystoneManagerDelegate {
         })
     }
     
-    func eddystoneManager(manager: KTKEddystoneManager, didUpdateEddystone eddystone: KTKEddystone, withFrame frameType: KTKEddystoneFrameType) {
+    func eddystoneManager(_ manager: KTKEddystoneManager, didUpdate eddystone: KTKEddystone, with frameType: KTKEddystoneFrameType) {
         if beacons.contains(eddystone) {
-            if let index = beacons.indexOf(eddystone) {
+            if let index = beacons.index(of: eddystone) {
                 beacons[index] = eddystone
             }
         }
@@ -44,7 +44,7 @@ class BeaconManager: NSObject, KTKEddystoneManagerDelegate {
     
     //Starts Eddystone beacon discovery
     func start() {
-        eddystoneManager.startEddystoneDiscoveryInRegion(namespaceRegion)
+        eddystoneManager.startEddystoneDiscovery(in: namespaceRegion)
     }
     
     //Stops Eddystone beacon discovery
@@ -56,12 +56,12 @@ class BeaconManager: NSObject, KTKEddystoneManagerDelegate {
     * - todo: This function may have to enforce some sort of ordering on the different beacons
     */
     func createRangingSample() -> BeaconRangingSample {
-        let rssiValues = beacons.map({ $0.RSSI.integerValue })
+        let rssiValues = beacons.map({ $0.rssi.intValue })
         return BeaconRangingSample(withRssiValues: rssiValues)
     }
     
     func appendRangingSample(toRoom room: Room) {
-        let rssiValues = beacons.map({ $0.RSSI.integerValue })
+        let rssiValues = beacons.map({ $0.rssi.intValue })
         print(rssiValues)
         room.rangingSamples.append(BeaconRangingSample(withRssiValues: rssiValues))
         

@@ -165,6 +165,12 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
 				LastUpgradeCheck = 0700;
+				TargetAttributes = {
+					C8A9165ACBE80739CEA730D495E1CD28 = {
+						DevelopmentTeam = 3PXFY7F9L5;
+						DevelopmentTeamName = "Eirik Vikanes (Personal Team)";
+					};
+				};
 			};
 			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";

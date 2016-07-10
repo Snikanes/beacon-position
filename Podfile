@@ -3,5 +3,4 @@ use_frameworks!
 
 target 'beacon-position' do
     pod 'KontaktSDK', '~> 1.0'
-
 end
