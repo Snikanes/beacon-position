@@ -53,11 +53,15 @@ class BeaconManager: NSObject, KTKEddystoneManagerDelegate {
     }
     
     /* Creates a BeaconRangingSample based on the beacon information available (maybe move to separate class)
-    * - todo: This function may have to enforce some sort of ordering on the different beacons
+    *  Returns nil if any of the measurements was 0 or there were fewer beacon measurements than necessary
     */
-    func createRangingSample() -> BeaconRangingSample {
+    
+    func createRangingSample(forNumberOfBeacons numberOfBeacons: Int) -> BeaconRangingSample? {
         let IDsAndRssiValues = beacons.map({ ($0.identifier.uuidString, $0.rssi.intValue) })
-        return BeaconRangingSample(withIDsAndRssiValues: IDsAndRssiValues)
+        if IDsAndRssiValues.count >= numberOfBeacons && !IDsAndRssiValues.contains({ $0.1 == 0 }) {
+            return BeaconRangingSample(withIDsAndRssiValues: IDsAndRssiValues)
+        }
+        return nil
     }
 }
 
@@ -78,7 +82,7 @@ struct BeaconRangingSample: CustomStringConvertible {
     
     var description: String {
         get {
-            return "\(values) \n"
+            return "\(values.map({ $0.1 })) \n"
         }
     }
     
@@ -86,6 +90,4 @@ struct BeaconRangingSample: CustomStringConvertible {
     init(withIDsAndRssiValues values: [(String, Int)]) {
         self.values = values.sorted(isOrderedBefore: { $0.0 > $1.0 })
     }
-    
-    
 }

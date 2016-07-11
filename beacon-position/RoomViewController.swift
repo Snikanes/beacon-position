@@ -45,22 +45,17 @@ class RoomViewController: UIViewController, BeaconDelegate {
             if (timer != nil) {
                 timer.invalidate()
             }
-            samplesTextView.text = room.rangingSamples.description
+            samplesTextView.text = room.description
             
         } else {
             timer = Timer.scheduledTimer(withTimeInterval: 0.2, repeats: true, block: { _ in
-                self.room.append(rangingSample: self.beaconManager.createRangingSample())
+                if let rangingSample = self.beaconManager.createRangingSample(forNumberOfBeacons: self.room.numberOfBeacons!) {
+                    self.room.append(rangingSample: rangingSample)
+                }
             })
         }
         isProfiling = !isProfiling
     }
-    /*
-    func appendSample(whenTimerFires timer: Timer) {
-        DispatchQueue.global(attributes: DispatchQueue.GlobalAttributes.qosUserInitiated).async(execute: {
-            
-        })
-    }
- */
     
     func beaconsChanged() {
         if(room.numberOfBeacons != nil) {

@@ -8,11 +8,17 @@
 
 import Foundation
 
-class Room {
+class Room: CustomStringConvertible {
     
     var name: String
-    var rangingSamples: Array<BeaconRangingSample>!
-    var numberOfBeacons: Int?
+    private var rangingSamples: Array<BeaconRangingSample>!
+    let numberOfBeacons: Int?
+    
+    var description: String {
+        get {
+            return rangingSamples.description
+        }
+    }
     
     // Initializer takes the name of the room and a specified number of beacons, and initalizes an empty array
     init(withName name: String, forNumberOfBeacons numberOfBeacons: Int?) {
